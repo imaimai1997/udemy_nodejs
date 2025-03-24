@@ -1,4 +1,4 @@
 // const { plus } = require('./calc');
-import { plus } from "./calc.mjs";
-const result = plus(1, 2);
+import minusFn, * as calc  from "./calc.mjs";
+const result = calc.default(1, 2);
 console.log(result);
