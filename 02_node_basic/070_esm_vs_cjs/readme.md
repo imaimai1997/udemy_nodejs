@@ -1,4 +1,5 @@
 # ESM と CJS の違い
+ESMでは使用できない。CMSでは使用できる。
 - No require, exports, or module.exports
 - No __filename or __dirname
 - require で JSON が読み込めない
@@ -7,7 +8,7 @@
 console.log('hello');
 ```
 
-```js:Node.js CJSの実行時
+```js:Node.js CJS（コモンJS）の実行時
 (function (exports, require, module, __filename, __dirname) {
   // 即時関数でモジュールはラップされる
   console.log('hello');
