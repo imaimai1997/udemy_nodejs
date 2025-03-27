@@ -9,9 +9,9 @@ import { chromium } from "@playwright/test";
   await page.goto("http://localhost:3000");
 
   // CSS セレクターで要素を取得
-  const pageTitleLocator = page.locator(".navbar-brand");
-  const pageTitle = await pageTitleLocator.innerText();
-  // console.log(pageTitle);
+  const pageTitleLocator = page.locator(".cards.list-group-item >> ..");
+  const pageTitle = await pageTitleLocator.innerHTML();
+  console.log(pageTitle);
 
   await browser.close();
 })();
