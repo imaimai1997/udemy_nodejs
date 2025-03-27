@@ -10,6 +10,7 @@ import { chromium } from "@playwright/test";
 
   // CSS セレクターで要素を取得
   const pageTitleLocator = page.locator(".cards.list-group-item >> ..");
+  debugger;
   const pageTitle = await pageTitleLocator.innerHTML();
   console.log(pageTitle);
 
