@@ -18,7 +18,7 @@ dotenv.config();
       user: process.env.EMAIL_FROM,
       //googleアカウントのアプリパスワードを設定
       // see https://support.google.com/accounts/answer/185833?hl=ja
-      pass: "",
+      pass: process.env.APP_PASS,
     },
   };
 
