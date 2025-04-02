@@ -14,6 +14,12 @@ app.get("/", (req, res) => {
     </form>
     `);
 });
+
+app.get("/result", (req, res) => {
+  const params = req.query;
+  console.log(params);
+});
+
 app.listen(PORT, () => {
   console.log(`Server start: http://localhost:${PORT}`);
 });
