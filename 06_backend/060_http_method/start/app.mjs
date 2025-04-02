@@ -14,7 +14,6 @@ import * as http from "http";
 
 const server = http.createServer(function (req, res) {
   res.writeHead(200, { "content-type": "text/html; charset=UTF-8" });
-  console.log(req.url);
   if (req.url === "/") {
     res.write(
       `<a href="/result?param1=パラメータ1 &param2=パラメータ2">Get Method Link</a>`
@@ -25,9 +24,16 @@ const server = http.createServer(function (req, res) {
         <input type="submit">
       </form>
        `);
-  } else if (req.url === "/bye") {
-    res.end("bye");
   } else {
+    console.log(req.url);
+    console.log(req.method);
+
+    if (req.method === "GET") {
+      //GETのパラメータを取得
+      const queryString = req.url.split("?")[1];
+      const params = new URLSearchParams(queryString);
+      console.log(params.get("param1"));
+    }
     res.end(req.url);
   }
 });
