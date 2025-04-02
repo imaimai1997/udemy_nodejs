@@ -21,6 +21,7 @@ const server = http.createServer(function (req, res) {
     res.end(`
       <form action="/result" method="POST">
         <input type="text" name="title">
+        <input type="text" name="description">
         <input type="submit">
       </form>
        `);
@@ -33,6 +34,15 @@ const server = http.createServer(function (req, res) {
       const queryString = req.url.split("?")[1];
       const params = new URLSearchParams(queryString);
       console.log(params.get("param1"));
+    } else if (req.method === "POST") {
+      let data = "";
+      req.on("data", function (chunk) {
+        data += chunk;
+      });
+      req.on("end", function () {
+        const params = new URLSearchParams(data);
+        console.log(params);
+      });
     }
     res.end(req.url);
   }
