@@ -28,6 +28,14 @@ app.use("/", function (req, res, next) {
 app.get("/*", function (req, res) {
   console.log("/ get");
 });
+
+app.use(function (error, req, res, next) {
+  if (res.headerSent) {
+    return next(error);
+  }
+  res.json({ error: error });
+});
+
 app.listen(PORT, function () {
   console.log(`Server start: http://localhost:${PORT}`);
 });
