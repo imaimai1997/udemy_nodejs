@@ -29,10 +29,10 @@ content-type: application/json
 }
 
 ### update
-PATCH http://localhost:8080/update-product
+POST http://localhost:8080/update-product
 content-type: application/json
 
 {
   "id": 2,
-  "price": 100
+  "price": 200
 }
