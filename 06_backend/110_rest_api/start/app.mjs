@@ -15,22 +15,26 @@ app.get("/products", function (req, res) {
   res.json(products);
 });
 
-app.post("/create-product", function (req, res) {
+app.get("/products/:id", function (req, res) {
+  res.json(products[req.params.id]);
+});
+
+app.post("/products", function (req, res) {
   const newProduct = req.body;
   products.push(newProduct);
   console.log(products);
   res.json(newProduct);
 });
 
-app.post("/delete-product", function (req, res) {
-  const deleteId = req.body.id;
+app.delete("/products/:id", function (req, res) {
+  const deleteId = req.params.id;
   products.splice(deleteId, 1);
   console.log(products);
   res.json({ deleteId });
 });
 
-app.post("/update-product", function (req, res) {
-  const targetProduct = products[req.body.id];
+app.patch("/products/:id", function (req, res) {
+  const targetProduct = products[req.params.id];
   if (req.body.hasOwnProperty("price")) {
     targetProduct.price = req.body.price;
   }
