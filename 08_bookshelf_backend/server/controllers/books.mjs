@@ -1,5 +1,5 @@
-import { validationResult } from 'express-validator';
-import Book from '../models/book.mjs';
+import { validationResult } from "express-validator";
+import Book from "../models/book.mjs";
 
 async function getAllBooks(req, res) {
   const books = await Book.find().sort({ updatedAt: -1 });
@@ -10,7 +10,7 @@ async function getBookById(req, res) {
   const _id = req.params.id;
   const book = await Book.findById(_id);
 
-  if (book === null) return res.status(404).json({ msg: 'Page Not Found' });
+  if (book === null) return res.status(404).json({ msg: "Page Not Found" });
 
   res.json(book);
 }
@@ -41,7 +41,7 @@ async function updateBook(req, res) {
   const _id = req.params.id;
   const book = await Book.findById(_id);
 
-  if (book === null) return res.status(404).json({ msg: 'Page Not Found' });
+  if (book === null) return res.status(404).json({ msg: "Page Not Found" });
 
   if (title !== undefined) book.title = title;
   if (description !== undefined) book.description = description;
@@ -55,9 +55,24 @@ async function deleteBook(req, res) {
   const _id = req.params.id;
   const { deletedCount } = await Book.deleteOne({ _id });
 
-  if (deletedCount === 0) return res.status(404).json({ msg: 'Target Book Not Found' });
+  if (deletedCount === 0)
+    return res.status(404).json({ msg: "Target Book Not Found" });
 
-  res.json({ msg: 'Delete succeeded.' });
+  res.json({ msg: "Delete succeeded." });
 }
+
+// async function deleteBook(req, res) {
+//   try{
+//   const _id = req.params.id;
+//   const { deletedCount } = await Book.deleteOne({ _id });
+
+//   if (deletedCount === 0) return res.status(404).json({ msg: 'Target Book Not Found' });
+
+//   res.json({ msg: 'Delete succeeded.' });
+// }catch (err){
+//   console.log(err);
+//   res.status(500).json({msg:"不正なエラーが発生しました。"})
+// }
+// }
 
 export { getAllBooks, getBookById, registBook, updateBook, deleteBook };

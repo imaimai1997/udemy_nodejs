@@ -5,7 +5,7 @@ http://localhost:8080/api/books
 http://localhost:8080/api/books/633bccbde8223018daf0917b
 ###
 
-DELETE http://localhost:8080/api/books/633bccbde8223018daf0917b
+DELETE http://localhost:8080/api/books/633bcde8223018daf0917b
 ###
 
 POST http://localhost:8080/api/books
