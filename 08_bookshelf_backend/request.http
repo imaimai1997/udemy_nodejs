@@ -12,9 +12,9 @@ POST http://localhost:8080/api/books
 Content-Type: application/json
 
 {
-    "title": "test",
+    "title": "",
     "description": "test",
-    "comment": "test",
+    "comment": "",
     "rating": 4
 }
 

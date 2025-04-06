@@ -1,6 +1,6 @@
 import express from "express";
 import Book from "../models/book.mjs";
-import { body } from "express-validator";
+import { body, validationResult } from "express-validator";
 import { requestErrorHandler } from "../helpers/helper.mjs";
 import {
   getBookById,
@@ -27,12 +27,18 @@ router.delete("/:id", async function (req, res) {
   await Book.deleteOne({ _id });
   res.json({ msg: "Delete successed" });
 });
-router.post("/", async function (req, res) {
-  const body = req.body;
-  const book = new Book(body);
-  const newBook = await book.save();
-  res.json(newBook);
-});
+// router.post("/", body("title").notEmpty().withMessage("エラーメッセージ"),registBook);
+// router.post("/", async function (req, res) {
+//   const errors = validationResult(req);
+//   if (errors.isEmpty()) {
+//     const errs = errors.array();
+//     return res.status(400).json(errs);
+//   }
+//   const body = req.body;
+//   const book = new Book(body);
+//   const newBook = await book.save();
+//   res.json(newBook);
+// });
 router.patch("/:id", async function (req, res) {
   const { title, rating, description, comment } = req.body;
   const _id = req.params.id;
@@ -49,14 +55,14 @@ router.patch("/:id", async function (req, res) {
 
 // router.get("/:id", requestErrorHandler(getBookById));
 
-// router.post(
-//   "/",
-//   body("title").notEmpty(),
-//   body("description").notEmpty(),
-//   body("comment").notEmpty(),
-//   body("rating").notEmpty().isInt({ min: 1, max: 5 }),
-//   requestErrorHandler(registBook)
-// );
+router.post(
+  "/",
+  body("title").notEmpty(),
+  body("description").notEmpty(),
+  body("comment").notEmpty(),
+  body("rating").notEmpty().isInt({ min: 1, max: 5 }),
+  requestErrorHandler(registBook)
+);
 
 // validator.js
 // https://github.com/validatorjs/validator.js
