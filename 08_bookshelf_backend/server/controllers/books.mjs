@@ -74,5 +74,6 @@ async function deleteBook(req, res) {
 //   res.status(500).json({msg:"不正なエラーが発生しました。"})
 // }
 // }
+// このエラーハンドリングを加味したのがhelper.mjs
 
 export { getAllBooks, getBookById, registBook, updateBook, deleteBook };
