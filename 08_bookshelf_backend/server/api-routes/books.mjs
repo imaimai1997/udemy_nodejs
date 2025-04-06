@@ -12,21 +12,21 @@ import {
 
 const router = express.Router();
 
-router.get("/", async function (req, res) {
-  const books = await Book.find().sort({ updatedAt: -1 });
-  res.json(books);
-});
+// router.get("/", async function (req, res) {
+//   const books = await Book.find().sort({ updatedAt: -1 });
+//   res.json(books);
+// });
 
-router.get("/:id", async function (req, res) {
-  const _id = req.params.id;
-  const books = await Book.findById(_id);
-  res.json(books);
-});
-router.delete("/:id", async function (req, res) {
-  const _id = req.params.id;
-  await Book.deleteOne({ _id });
-  res.json({ msg: "Delete successed" });
-});
+// router.get("/:id", async function (req, res) {
+//   const _id = req.params.id;
+//   const books = await Book.findById(_id);
+//   res.json(books);
+// });
+// router.delete("/:id", async function (req, res) {
+//   const _id = req.params.id;
+//   await Book.deleteOne({ _id });
+//   res.json({ msg: "Delete successed" });
+// });
 // router.post("/", body("title").notEmpty().withMessage("エラーメッセージ"),registBook);
 // router.post("/", async function (req, res) {
 //   const errors = validationResult(req);
@@ -51,9 +51,9 @@ router.delete("/:id", async function (req, res) {
 //   res.json(book);
 // });
 
-// router.get('/', requestErrorHandler(getAllBooks));
+router.get("/", requestErrorHandler(getAllBooks));
 
-// router.get("/:id", requestErrorHandler(getBookById));
+router.get("/:id", requestErrorHandler(getBookById));
 
 router.post(
   "/",
@@ -75,6 +75,6 @@ router.patch(
   requestErrorHandler(updateBook)
 );
 
-// router.delete("/:id", requestErrorHandler(deleteBook));
+router.delete("/:id", requestErrorHandler(deleteBook));
 
 export default router;

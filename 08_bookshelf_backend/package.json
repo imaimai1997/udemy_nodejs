@@ -4,7 +4,7 @@
   "description": "本セクションで、書きながら学びたい場合にはこのフォルダ（08_bookshelf_backend）を 別名にして、新しくフォルダを作成してその中に記述してください。",
   "main": "index.js",
   "scripts": {
-    "dev:api": "nodemon app.mjs"
+    "dev:api": "nodemon server/app.mjs"
   },
   "keywords": [],
   "author": "",
