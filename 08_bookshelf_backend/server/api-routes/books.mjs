@@ -39,17 +39,17 @@ router.delete("/:id", async function (req, res) {
 //   const newBook = await book.save();
 //   res.json(newBook);
 // });
-router.patch("/:id", async function (req, res) {
-  const { title, rating, description, comment } = req.body;
-  const _id = req.params.id;
-  const book = await Book.findById(_id);
-  if (title !== undefined) book.title = title;
-  if (rating !== undefined) book.rating = rating;
-  if (comment !== undefined) book.comment = comment;
-  if (description !== undefined) book.description = description;
-  await book.save();
-  res.json(book);
-});
+// router.patch("/:id", async function (req, res) {
+//   const { title, rating, description, comment } = req.body;
+//   const _id = req.params.id;
+//   const book = await Book.findById(_id);
+//   if (title !== undefined) book.title = title;
+//   if (rating !== undefined) book.rating = rating;
+//   if (comment !== undefined) book.comment = comment;
+//   if (description !== undefined) book.description = description;
+//   await book.save();
+//   res.json(book);
+// });
 
 // router.get('/', requestErrorHandler(getAllBooks));
 
@@ -66,14 +66,14 @@ router.post(
 
 // validator.js
 // https://github.com/validatorjs/validator.js
-// router.patch(
-//   "/:id",
-//   body("title").optional().notEmpty(),
-//   body("description").optional().notEmpty(),
-//   body("comment").optional().notEmpty(),
-//   body("rating").optional().notEmpty().isInt({ min: 1, max: 5 }),
-//   requestErrorHandler(updateBook)
-// );
+router.patch(
+  "/:id",
+  body("title").optional().notEmpty(),
+  body("description").optional().notEmpty(),
+  body("comment").optional().notEmpty(),
+  body("rating").optional().notEmpty().isInt({ min: 1, max: 5 }),
+  requestErrorHandler(updateBook)
+);
 
 // router.delete("/:id", requestErrorHandler(deleteBook));
 

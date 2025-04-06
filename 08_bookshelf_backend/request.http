@@ -24,5 +24,6 @@ PATCH http://localhost:8080/api/books/67f2183bd82c3be5aef1a047
 Content-Type: application/json
 
 {
-    "rating": 1
+    "title": "",
+    "rating": 3
 }
