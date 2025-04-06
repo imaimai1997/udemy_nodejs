@@ -1,4 +1,5 @@
 import express from "express";
+import Book from "../models/book.mjs";
 import { body } from "express-validator";
 import { requestErrorHandler } from "../helpers/helper.mjs";
 import {
@@ -12,8 +13,9 @@ import {
 const router = express.Router();
 
 // router.get('/', requestErrorHandler(getAllBooks));
-router.get("/", function (req, res) {
-  res.send("./api/books");
+router.get("/", async function (req, res) {
+  const books = await Book.find();
+  res.json(books);
 });
 
 router.get("/:id", requestErrorHandler(getBookById));

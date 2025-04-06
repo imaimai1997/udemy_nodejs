@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 const bookSchema = Schema(
   {
@@ -29,5 +29,5 @@ const bookSchema = Schema(
   { timestamps: true }
 );
 
-const Book = model('Book', bookSchema);
+const Book = model("Book", bookSchema);
 export default Book;
