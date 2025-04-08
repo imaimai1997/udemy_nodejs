@@ -1,19 +1,23 @@
 import axios from "axios";
 
-axios.interceptors.response.use(function (response) {
-  // Any status code that lie within the range of 2xx cause this function to trigger
-  // Do something with response data
-  return response;
-}, function (error) {
-  // Any status codes that falls outside the range of 2xx cause this function to trigger
-  // Do something with response error
-  return Promise.reject(error.response.data.msg || '時間をおいてお試しください。');
-});
+axios.interceptors.response.use(
+  function (response) {
+    // Any status code that lie within the range of 2xx cause this function to trigger
+    // Do something with response data
+    return response;
+  },
+  function (error) {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(
+      error.response.data.msg || "時間をおいてお試しください。"
+    );
+  }
+);
 
-const ENDPOINT_URL = "/api/books";
+const ENDPOINT_URL = "http://localhost:8080/api/books";
 
 const bookApi = {
-
   async get(id) {
     const result = await axios.get(ENDPOINT_URL + "/" + id);
     return result.data;
