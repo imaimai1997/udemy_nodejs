@@ -15,7 +15,7 @@ axios.interceptors.response.use(
   }
 );
 
-const ENDPOINT_URL = "http://localhost:8080/api/books";
+const ENDPOINT_URL = "/api/books";
 
 const bookApi = {
   async get(id) {

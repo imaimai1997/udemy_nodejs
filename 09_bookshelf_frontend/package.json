@@ -2,6 +2,7 @@
   "name": "09_bookshelf_frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://localhost:8080",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",

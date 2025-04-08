@@ -11,12 +11,12 @@ const port = process.env.PORT || 8080;
 app.use(express.static("build"));
 
 app.use(express.json());
-import cors from "cors";
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+// import cors from "cors";
+// app.use(
+//   cors({
+//     origin: "*",
+//   })
+// );
 
 // API
 app.use("/api", apiRoutes);
