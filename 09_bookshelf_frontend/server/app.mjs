@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import env from "dotenv";
 env.config();
@@ -20,6 +21,10 @@ app.use(express.json());
 
 // API
 app.use("/api", apiRoutes);
+app.get("*", function (req, res) {
+  const indexHtml = path.resolve("build,index.html");
+  res.sendFile(indexHtml);
+});
 
 // APIで処理が完了されなかったら、下のコードが実施される。
 // 処理が完了していたら、APIでコードが終わる。
